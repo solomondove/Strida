@@ -8,7 +8,7 @@ import {AuthRoute} from '../util/route_util';
 const App = () => (
     <div>
         <header>
-            <h1 className="header-logo">STRIDA</h1>
+            <h1 className="header-logo"></h1>
             <NavBarRightContainer /> 
         </header>
         <AuthRoute path='/login' component={LoginFormContainer} /> 
