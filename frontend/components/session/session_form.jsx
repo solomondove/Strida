@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.demoSubmit = this.demoSubmit.bind(this); 
     }
 
     handleSubmit(e) {
@@ -19,6 +20,15 @@ class SessionForm extends React.Component {
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value });
+    }
+
+    demoSubmit(e) {
+        e.preventDefault(); 
+        let demo = { 
+            email: 'demo@demo.com', 
+            password: 'password'
+        }; 
+        this.props.login(demo);
     }
 
     render() {
@@ -34,6 +44,8 @@ class SessionForm extends React.Component {
         )
         return(
             <div className="form-container">
+                <br/> 
+                <br/> 
                 <br/> 
                 <h1 className="form-type">{label}</h1>
                 <div>{this.props.errors.session.reponseText}</div>
@@ -52,8 +64,9 @@ class SessionForm extends React.Component {
                     <button className="session-button" id="submit" type='submit'>{this.props.formType}</button>
                 </form>
                 <br/> 
-                {link}
-                <br/> 
+                <form onSubmit={this.demoSubmit}>
+                    <button className="session-button" id='submit' type="submit">Demo Login</button>
+                </form>
             </div>
         )
     }
