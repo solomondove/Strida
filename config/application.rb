@@ -1,5 +1,5 @@
 require_relative 'boot'
-
+require 'figaro'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -9,7 +9,9 @@ Bundler.require(*Rails.groups)
 module Strida
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    Figaro.load 
     config.load_defaults 5.2
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

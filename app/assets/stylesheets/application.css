@@ -21,3 +21,8 @@
 html,body {
     height: 100%; 
 }
+
+#map-container {
+    width: 500px; 
+    height: 500px; 
+}
