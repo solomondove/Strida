@@ -14,6 +14,10 @@
  *= require_self
  */
 
- @import 'reset.css'; 
+@import 'reset.css'; 
+@import 'nav_bar.css'; 
+@import 'session_form.css'; 
 
- 
+html,body {
+    height: 100%; 
+}

@@ -23,24 +23,37 @@ class SessionForm extends React.Component {
 
     render() {
         let link = this.props.formType === "Sign Up" ? (
-            <Link to='/login' >Already Signed Up? </Link>
+            <Link className="session-button" to='/login' >Already Registered? </Link>
         ) : (
-            <Link to='/signup'>Create a New Account</Link>
+            <Link className="session-button" to='/signup'>Create a New Account</Link>
+        )
+        let label = this.props.formType === "Sign Up" ? (
+            "Join Strida today, it's Free."
+        ) : (
+            "Log In"
         )
         return(
-            <div>
-                <h1>{this.props.formType}</h1>
+            <div className="form-container">
+                <br/> 
+                <h1 className="form-type">{label}</h1>
                 <div>{this.props.errors.session.reponseText}</div>
+                <br/> 
                 <form onSubmit={this.handleSubmit}>
-                    <label>Email: 
-                        <input type="text" value={this.state.email} onChange={this.update("email")}/>
+                    <label>
+                        <input className="input-field" type="text" value={this.state.email} placeholder="Email" onChange={this.update("email")}/>
                     </label>
-                    <label>Password:
-                        <input type="password" value={this.state.password} onChange={this.update("password")} />
+                    <br/>
+                    <br/>
+                    <label>
+                        <input className="input-field" type="password" value={this.state.password} placeholder="Password" onChange={this.update("password")} />
                     </label>
-                    <button type='submit'>{this.props.formType}</button>
+                    <br/>
+                    <br/>
+                    <button className="session-button" id="submit" type='submit'>{this.props.formType}</button>
                 </form>
+                <br/> 
                 {link}
+                <br/> 
             </div>
         )
     }

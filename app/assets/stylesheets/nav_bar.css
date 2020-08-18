@@ -1,0 +1,41 @@
+header {
+    display: flex; 
+    justify-content: space-between; 
+    border-bottom: 1px solid #f0f0f5;
+}
+
+.header-logo {
+    color: #fc5200; 
+    font-family: 'Rubik Mono One', sans-serif; 
+    font-weight: 900; 
+    display: block; 
+    font-size: 25px; 
+    padding: 15px 10px 15px 10px; 
+}
+
+.session-button {
+    font-style: bold; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 12px; 
+    color: #fff; 
+    padding: 6px 16px 6px 16px; 
+    /* border-color: #fc5200;  */
+    border-style: outset; 
+    margin: 4px; 
+    background-color: #fc5200; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    justify-content: center; 
+    text-decoration: none; 
+}
+
+.session-button:hover {
+    background-color: rgb(235, 76, 0); 
+}
+
+.nav-right {
+    margin-top: 10px; 
+    margin-right: 20px; 
+    display: flex; 
+    
+}

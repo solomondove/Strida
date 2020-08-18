@@ -11,7 +11,6 @@ const App = () => (
             <h1 className="header-logo">STRIDA</h1>
             <NavBarRightContainer /> 
         </header>
-
         <AuthRoute path='/login' component={LoginFormContainer} /> 
         <AuthRoute path='/signup' component={SignupFormContainer} /> 
     </div>
