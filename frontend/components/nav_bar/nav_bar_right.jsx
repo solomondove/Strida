@@ -27,7 +27,7 @@ import {Link} from 'react-router-dom';
 export default ({currentUser, logout}) => {
     const display = currentUser ? (
         <div className="nav-right">
-            <button className="session-button" id="submit" onClick={() => logout()}>Logout</button>
+            <button className="session-button" id="submit-logout" onClick={() => logout()}>Logout</button>
         </div>
     ) : (
         <div className="nav-right">
