@@ -15,10 +15,6 @@
     justify-content: space-around; 
 }
 
-.splash-form {
-    margin-top: 400px; 
-}
-
 .splash-image {
     background-image: image-url('splash.jpg');
     background-repeat: no-repeat; 
@@ -29,7 +25,31 @@
 }
 
 #splash-demo {
+    color: #242428; 
+    border: 1px solid #dfdfe8; 
+    background-color: #fff; 
     height: 85px; 
-    border-style: none; 
+    width:300px; 
     font-size: 15px; 
+}
+
+#splash-demo:hover {
+    background-color: #f7f7fa; 
+    border-color: #6d6d78; 
+}
+
+.splash-menu {
+    margin-top: 380px; 
+    width: 300px; 
+}
+
+.splash-body footer {
+    margin-top: 5px; 
+    font-family: inherit; 
+    font-size: 12px; 
+}
+
+.splash-link {
+    text-decoration: none;
+    color: #007fb6; 
 }
