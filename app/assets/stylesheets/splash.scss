@@ -1,0 +1,35 @@
+.splash-container {
+    text-align: center; 
+    margin: 0 auto; 
+}
+
+.splash-header {
+    font-family: inherit; 
+    margin-top: 80px; 
+    font-size: 48px; 
+    font-weight: 550; 
+}
+
+.splash-body {
+    display: flex; 
+    justify-content: space-around; 
+}
+
+.splash-form {
+    margin-top: 400px; 
+}
+
+.splash-image {
+    background-image: image-url('splash.jpg');
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: contain; 
+    height: 600px; 
+    width: 450px; 
+}
+
+#splash-demo {
+    height: 85px; 
+    border-style: none; 
+    font-size: 15px; 
+}

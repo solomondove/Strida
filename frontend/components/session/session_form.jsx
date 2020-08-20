@@ -13,6 +13,10 @@ class SessionForm extends React.Component {
         this.demoSubmit = this.demoSubmit.bind(this); 
     }
 
+    componentDidMount(){
+        this.props.clearSessionErrors(); 
+    }
+
     handleSubmit(e) {
         e.preventDefault(); 
         this.props.action(this.state); 
@@ -32,41 +36,54 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        let link = this.props.formType === "Sign Up" ? (
-            <Link className="session-button" to='/login' >Already Registered? </Link>
-        ) : (
-            <Link className="session-button" to='/signup'>Create a New Account</Link>
-        )
+        
         let label = this.props.formType === "Sign Up" ? (
             "Join Strida today, it's Free."
         ) : (
             "Log In"
         )
+
+        console.log(this.props.errors.session.responseJSON);
+
+        let errorMessages = this.props.errors.session.responseJSON === undefined ? (
+            <br/> 
+        ) : ( 
+            <div className="errors">
+                <br/> 
+                {this.props.errors.session.responseJSON.map((error, idx) => {
+                    return <div key={idx}>{error}</div>
+                })}
+                <br/> 
+            </div>
+        )
+ 
         return(
-            <div className="form-container">
+            <div className="form-background">
                 <br/> 
                 <br/> 
                 <br/> 
-                <h1 className="form-type">{label}</h1>
-                <div>{this.props.errors.session.reponseText}</div>
-                <br/> 
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <input className="input-field" type="text" value={this.state.email} placeholder="Email" onChange={this.update("email")}/>
-                    </label>
-                    <br/>
-                    <br/>
-                    <label>
-                        <input className="input-field" type="password" value={this.state.password} placeholder="Password" onChange={this.update("password")} />
-                    </label>
-                    <br/>
-                    <br/>
-                    <button className="session-button" id="submit" type='submit'>{this.props.formType}</button>
-                </form>
-                <br/> 
-                <form onSubmit={this.demoSubmit}>
-                    <button className="session-button" id='submit' type="submit">Demo Login</button>
-                </form>
+                <div className="form-container">
+                    <h1 className="form-type">{label}</h1>
+                    {errorMessages}
+                    <br/> 
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            <input className="input-field" type="text" value={this.state.email} placeholder="Email" onChange={this.update("email")}/>
+                        </label>
+                        <br/>
+                        <br/>
+                        <label>
+                            <input className="input-field" type="password" value={this.state.password} placeholder="Password" onChange={this.update("password")} />
+                        </label>
+                        <br/>
+                        <br/>
+                        <button className="session-button" id="submit-session" type='submit'>{this.props.formType}</button>
+                    </form>
+                    <br/> 
+                    <form onSubmit={this.demoSubmit}>
+                        <button className="session-button" id='submit-session' type="submit">Demo Login</button>
+                    </form>
+                </div>
             </div>
         )
     }

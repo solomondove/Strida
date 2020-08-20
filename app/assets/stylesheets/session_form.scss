@@ -3,29 +3,45 @@
     padding: 20px 50px; 
     margin: 0 auto; 
     color: white; 
-    font-size: 34px; 
-    width: 280px; 
+    font-size: 34px;
     font-family: 'Rubik Mono One', sans-serif;
     border-radius: 4px; 
+    font-weight: 600; 
+    
+}
+
+.form-background {
+    text-align: center; 
+    background: image-url('session_form.jpg'); 
+    background-position: center; 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    height: 900px; 
 }
 
 .form-container {
-    text-align: center; 
-    background: #242428; 
+    border-radius: 4px; 
+    margin: 0 auto; 
+    background: rgba(0, 0, 0, 0.5); 
+    width: 400px; 
     height: 600px; 
 }
 
-#submit{
+#submit-session {
+    width: 240px; 
+    height: 35px; 
     border-style: none; 
 }
 
 .input-field {
-    padding: 5px 10px; 
+    padding: 10px 10px; 
     font-size: 15px; 
+    width: 220px; 
+    border-radius: 4px; 
     border: 1px solid #666; 
     background: rgba(0, 0, 0, 0.5); 
     color: #CCC; 
-    font-family: Arial, Helvetica, sans-serif; 
+    font-family: 'Rubik Mono One', sans-serif; 
 }
 
 .input-field:focus {
@@ -33,4 +49,16 @@
     border: 1px solid rgba( 0, 0, 0, 0.5); 
     color: #333; 
     background: rgba(255, 255, 255, 0.9);
+    outline: none; 
 }
+
+.errors {
+    font-family: 'Rubik Mono One', sans-serif; 
+    background-color: rgba(255, 0, 0, 0.7); 
+    color: white; 
+    height: 60px; 
+    // display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
