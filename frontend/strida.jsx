@@ -6,7 +6,9 @@ import Root from './components/root';
 //testing imports only 
 import {login, logout, signup} from './actions/session_actions'; 
 import * as SessionApiUtil from './util/session_api_util'; 
-
+import * as RouteApiUtil from './util/route_api_util'; 
+import * as routeActions from './actions/route_actions'; 
+import * as routeSelectors from './util/route_selectors'; 
 //testing imports only 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,11 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
     //testing purposes only 
     window.SessionApiUtil = SessionApiUtil; 
+    window.RouteApiUtil = RouteApiUtil
     window.getState = store.getState; 
     window.dispatch = store.dispatch; 
-    window.login = login; 
-    window.logout = logout; 
-    window.signup = signup; 
+    window.routeActions = routeActions; 
+    window.routeSelectors = routeSelectors; 
     //testing purposes only 
     
     const root = document.getElementById("root"); 

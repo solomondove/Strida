@@ -43,10 +43,45 @@ header {
 .nav-right {
     margin-top: 10px; 
     margin-right: 20px; 
-    display: flex; 
-    
+    display: flex;
 }
 
 #submit-logout {
     border-style: none; 
+}
+
+.nav-left {
+    margin-top: 15px; 
+    margin-left: 10px; 
+}
+
+.nav-menu { 
+    font-family: 'Rubik Mono One', sans-serif;
+    padding: 10px 10px 10px 10px; 
+    font-size: 14px; 
+    color: #494950; 
+    font-size: 14px; 
+    text-decoration: none; 
+}
+
+.nav-menu:hover {
+    color: #fc5200; 
+}
+
+.nav-body {
+    display: flex; 
+    justify-content: space-between; 
+    width: 90%; 
+}
+
+.anchor {
+    position: relative; 
+}
+
+.dropdown {
+    position: absolute; 
+    z-index: 2; 
+    width: 120px; 
+    text-align: left; 
+    border: 1px solid black; 
 }

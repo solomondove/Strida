@@ -1,66 +1,73 @@
 import React from 'react'; 
-import {createMarker, MarkerManager } from '../../util/marker_manager'; 
+import {sortByOrder} from '../../util/route_selectors'; 
 
 class RouteMap extends React.Component{
     constructor(props){
         super(props); 
         this.directionsService = new google.maps.DirectionsService(); 
-        this.directionsRenderer = new google.maps.DirectionsRenderer({ 
-            map: this.map
-        }); 
+        this.directionsRenderer = new google.maps.DirectionsRenderer(); 
 
         this.state = {
-            distance: 0, 
-            waypoints: [], 
-            markers: [], 
-            // waypoints: [{ lat: 37.756373, lng: -122.410569 }, { lat: 37.761453, lng: -122.411420 }, { lat: 37.765124, lng: -122.422420 }], 
+            name: this.props.name, 
+            distance: this.props.distance,
+            waypoints: this.props.waypoints,   
+            user_id: this.props.user_id, 
+            id: this.props.id
         }
         
-        this.mapDirectionsFromMarkers = this.mapDirectionsFromMarkers.bind(this); 
+        this.mapOptions = {
+            center: this.state.waypoints.length === 0 ? {lat: 37.7758, lng: -122.435 } : this.state.waypoints[this.state.waypoints.length -1 ],
+            zoom: 14
+        }; 
+
+        this.mapDirectionsFromMarkers = this.mapDirectionsFromWaypoints.bind(this); 
         this.renderCallback = this.renderCallback.bind(this); 
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this); 
+        this.handleSubmit = this.handleSubmit.bind(this); 
     }
     
     componentDidMount() {
-        const mapOptions = {
-            center: {lat: 37.7758, lng: -122.435 }, 
-            zoom: 13
-        }; 
-        this.map = new google.maps.Map(this.mapNode, mapOptions); 
-        this.MarkerManager = new MarkerManager(this.map); 
+        this.map = new google.maps.Map(this.mapNode, this.mapOptions); 
         this.directionsRenderer.setMap(this.map); 
-
+    
         this.map.addListener('click', (e) => { 
             this.createMarker(e.latLng); 
         })
-
+    
         this.directionsRenderer.addListener('directions_changed', () => {
             let result = this.directionsRenderer.getDirections();
             this.computeTotalDistance(result); 
         })
        
-        if (this.state.waypoints.length > 0) {
-            this.mapDirectionsFromMarkers(this.state.waypoints); 
+        if (this.state.waypoints.length > 1) {
+            this.mapDirectionsFromWaypoints(this.state.waypoints); 
+        }
+        
+        if (this.props.formType === "Update Route") {
+            this.props.fetchRoute(this.props.id); 
+        
         }
         
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.waypoints.length != this.state.waypoints.length) {
+    componentDidUpdate(prevProps, prevState) { 
+        if (prevState.waypoints.length < this.props.waypoints.length ) {
+            this.setState({ waypoints: this.props.waypoints })
+        }
+        if (prevState.waypoints.length !== this.state.waypoints.length) {
+            this.map = new google.maps.Map(this.mapNode, this.mapOptions);
+            this.directionsRenderer.setMap(this.map); 
+
+            this.map.addListener('click', (e) => {
+                this.createMarker(e.latLng);
+            })
+
             if (this.state.waypoints.length > 0) {
-                this.mapDirectionsFromMarkers(this.state.waypoints); 
+                this.mapDirectionsFromWaypoints(this.state.waypoints); 
             }
         }
     }
     
-    //updates state.waypoints based on the results from the directions_changed event listener
-    updateWaypoints(result) {
-        let newWaypoints = []; 
-        result.geocoded_waypoints.forEach(point => {
-            newWaypoints.push(point.place_id);
-        })
-        this.setState({ waypoints: newWaypoints });
-    }
 
     //calculates state.distance of route based on results from directions_changed event listener
     computeTotalDistance(result) {
@@ -74,33 +81,10 @@ class RouteMap extends React.Component{
 
     //takes in a position formatted as a LatLng Maps object, creates marker on map and adds to local state. 
     createMarker(position){
-        //creates and updates state.waypoints
         let newCoordinates = ({lat: position.lat(), lng: position.lng() })
         let newWaypoints = Object.assign([], this.state.waypoints); 
         newWaypoints.push(newCoordinates); 
-        
-        //creates and updates state.markers
-        let marker = new google.maps.Marker({
-            position: position
-        })
-        let newMarkers = Object.assign([], this.state.markers); 
-        newMarkers.push(marker); 
-
-        this.setState({markers: newMarkers, waypoints: newWaypoints}); 
-        marker.setMap(this.map); 
-    }
-
-    //takes in positons formatted as an array of positions objects eg. [{ lat: sample, lng: sample }]
-    mapRouteMarkers(positions) {
-        let routePath = new google.maps.Polyline({
-            path: positions, 
-            geodesic: true, 
-            strokeColor: '#FF0000', 
-            strokeOpacity: 1.0, 
-            strokeWeight: 2
-        }); 
-
-        routePath.setMap(this.map); 
+        this.setState({ waypoints: newWaypoints });  
     }
 
     //helper function for mapDirectionsFromMarkers
@@ -115,7 +99,7 @@ class RouteMap extends React.Component{
         return { location: position }
     }
 
-    mapDirectionsFromMarkers(positions, travelMode="WALKING"){
+    mapDirectionsFromWaypoints(positions, travelMode="WALKING"){
         let origin = positions[0]; 
         let destination = positions[positions.length-1]; 
         let middlePosArray = positions.slice(1, positions.length-1);
@@ -134,20 +118,39 @@ class RouteMap extends React.Component{
     undoLastWaypoint() {
         let newWaypoints = this.state.waypoints.slice(0); 
         newWaypoints.pop(); 
-        let newMarkers = this.state.markers.slice(0); 
-        let targetMark = newMarkers.pop(); 
-        targetMark.setMap(null); 
+        this.setState({waypoints: newWaypoints}); 
+    }
 
-        this.setState({waypoints: newWaypoints, markers: newMarkers}); 
+    handleSubmit(e) {
+        e.preventDefault(); 
+        this.props.action(this.state); 
+    }
+
+    update(field) {
+        return e => this.setState({ [field]: e.currentTarget.value })
     }
 
     render() {
+        console.log(this.state); 
         return (
             <div>
-                <h1>Map!</h1>
-                <div id="map-container" ref={map => this.mapNode = map }></div>
-                <h3>{this.state.distance}</h3>
-                <button onClick={() => this.undoLastWaypoint()}>Undo</button>
+                <div className="map-body">
+                    <div className="map-form">  
+                        <h1 className='map-header'>{this.props.formType}</h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>Route Name: 
+                                <input type="text" value={this.state.name} onChange={this.update("name")}/>
+                            </label>
+                            <button type='submit'>{this.props.formType}</button>
+                        </form>
+                        <button onClick={() => this.undoLastWaypoint()}>Undo Last Segment</button>
+                        
+                    </div>
+                    <div id="map-container" ref={map => this.mapNode = map }></div>
+                </div>
+                <div className="map-footer">
+                    <h3>{this.state.distance}</h3>
+                </div>
             </div>
         )
     }

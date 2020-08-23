@@ -17,3 +17,15 @@ const mapSTP = state => {
 };
 
 export const AuthRoute = withRouter(connect(mapSTP, null)(Auth))
+
+
+
+const Protected = ({
+    component: Component, path, loggedIn, exact
+}) => (
+        <Route path={path} exact={exact}
+            render={props => !loggedIn ? <Redirect to='/login' /> : <Component {...props} />}
+        /> 
+)
+
+export const ProtectedRoute = withRouter(connect(mapSTP, null)(Protected))
