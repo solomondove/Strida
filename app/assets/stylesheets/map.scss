@@ -1,12 +1,13 @@
 .map-body {
     display: flex; 
     font-family: 'Rubik Mono One', sans-serif;
+    height: 600px; 
 }
 
 
 #map-container {
     width: 70%; 
-    height: 500px; 
+    height: 600px; 
 }
 
 .map-form {
@@ -31,10 +32,16 @@
     margin-bottom: 10px; 
 }
 
+.form-body input {
+    height: 23px; 
+}
+
+.form-body > label {
+    font-size: 11px; 
+}
 .map-form-footer {
     border-top: 1px solid #f0f0f5;
     font-size: 14px; 
-    // height: 200px; 
 }
 
 .fa-undo {
@@ -46,4 +53,12 @@
 
 .maps-link {
     color: #007fb6;
+}
+
+#map-submit {
+    margin-left: 0; 
+}
+
+.map-distance {
+    padding-bottom: 10px; 
 }

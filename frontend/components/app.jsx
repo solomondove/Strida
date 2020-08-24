@@ -27,8 +27,8 @@ const App = () => (
             <ProtectedRoute path='/routes/edit/:id' component={UpdateRouteContainer} /> 
             <ProtectedRoute exact path='/routes' component={RouteIndexContainer} /> 
         </Switch> 
-        <footer>
-            
+        <footer className='footer'>
+            <div ></div>
         </footer>
     </div>
 );

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'; 
 import RouteIndex from './route_index'; 
-import { fetchRoutes, fetchRoute } from '../../actions/route_actions'; 
+import { fetchRoutes, fetchRoute, removeRoute } from '../../actions/route_actions'; 
 
 
 const mapSTP = state => {
@@ -12,7 +12,8 @@ const mapSTP = state => {
 
 const mapDTP = dispatch => ({
     fetchRoutes: userId => dispatch(fetchRoutes(userId)), 
-    fetchRoute: routeId => dispatch(fetchRoute(routeId))
+    fetchRoute: routeId => dispatch(fetchRoute(routeId)), 
+    removeRoute: routeId => dispatch(removeRoute(routeId))
 })
 
 export default connect(mapSTP, mapDTP)(RouteIndex); 

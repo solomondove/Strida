@@ -1,11 +1,57 @@
+.route-index {
+    min-height: 600px; 
+    background-color: #f7f7fa; 
+    padding-left: 50px; 
+    padding-right: 50px;
+    padding-bottom: 20px; 
+}
+
+.index-heading {
+    display: block; 
+    height: 100px; 
+    padding-top: 30px;  
+    border-bottom: 1px solid #fff; 
+}
+
+.index-heading-header {
+    font-size: 34px; 
+    margin-bottom: 20px;  
+}
+
+.create-route {
+    margin: 0; 
+}
+
+.tile-container {
+    padding-top: 10px; 
+    display: inline-block; 
+}
+
+.route-index-tile {
+    display: inline-block; 
+    background-color: #fff; 
+    width: 160px; 
+    height: 200px; 
+    font-family: 'Rubik Mono One', sans-serif;
+    justify-content: center;  
+    padding: 10px; 
+    margin: 10px; 
+    border-radius: 4px; 
+}
+
+#index-icon {
+    text-shadow:3px 6px 4px rgba(255,165,0,.5); 
+}
+
 .route-list-item {
     list-style-type: none; 
     display: flex; 
-    font-family: 'Rubik Mono One', sans-serif;
-    margin: 20px; 
+    padding-bottom: 25px;
 }
+
 .route-info {
     margin-left: 10px; 
+    align-items: column; 
 }
 .route-name {
     color: #007fb6;
@@ -25,7 +71,9 @@
     font-size: 15px; 
 }
 
-.edit-route {
-    height: 12px; 
-    margin-left: 0px;
+#index-button {
+    margin-left: 25px;
+    width: 110px; 
+    height: 30px; 
+   
 }

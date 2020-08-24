@@ -26,6 +26,7 @@ class RouteMap extends React.Component{
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.updateStateWaypoints = this.updateStateWaypoints.bind(this); 
+        
     }
     
     componentDidMount() {
@@ -136,18 +137,21 @@ class RouteMap extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.action(this.state); 
+        this.props.action(this.state).then(response => {
+            let that = this; 
+            that.props.history.push('/routes'); 
+        }); 
     }
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value })
     }
 
+   
+
     render() {
         let distance = (this.state.distance * 0.000621371).toFixed(2); 
-        const deleteButton = (this.props.formType === "Update Route" ) ? 
-           ( <button onClick={() => this.props.removeRoute(this.state.id)} className="form-body"><i className="fas fa-trash-alt"></i></button>)
-           : ( <div/> )
+        
 
         return (
             <div>
@@ -155,19 +159,18 @@ class RouteMap extends React.Component{
                     <div className="map-form">  
                         <h1 className='map-header'>{this.props.formType}</h1>
                         <form onSubmit={this.handleSubmit} className="form-body">
-                            <label>
-                                <input type="text" value={this.state.name} placeholder='Route Name' onChange={this.update("name")}/>
+                            <label>Route name (required) 
+                                <input type="text" value={this.state.name} placeholder='Name' onChange={this.update("name")}/>
                             </label>
                             <br/>
                             <br/> 
-                            <button type='submit' className="session-button">{this.props.formType}</button>
+                            <button type='submit' className="session-button" id="map-submit">{this.props.formType}</button>
                         </form> 
-                            <button onClick={() => this.undoLastWaypoint()} className="form-body"><i className="fas fa-undo"></i></button>
-                            {deleteButton}
+                            <button onClick={() => this.undoLastWaypoint()} className="form-body"><i className="fas fa-undo"></i></button> 
                         <br/>
                         <div className="map-form-footer">
                             <h1 className="map-header">Route Stats</h1>
-                            <h3>Distance: {distance} miles</h3>
+                            <h3 className="map-distance">Distance: {distance} miles</h3>
                             <div className="footer-nav">
                                 <Link className='maps-link' to='/routes'>My Routes</Link>
                             </div>
