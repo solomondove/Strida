@@ -37,6 +37,15 @@
     outline: none; 
 }
 
+#submit-session-demo {
+    width: 240px; 
+    height: 35px; 
+    border-style: none; 
+}
+
+#submit-session-demo:focus {
+    outline: none; 
+}
 .input-field {
     padding: 10px 10px; 
     font-size: 15px; 

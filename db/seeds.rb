@@ -10,8 +10,8 @@
 solomon = User.create({ email: 'solomon@solomon.com', password: 'password'})
 demo = User.create({ email: 'demo@demo.com', password: 'password'})
 
-route1 = Route.create({ name: 'To the Beach', user_id: demo.id, distance: 792})
-route2 = Route.create({ name: 'Golden Gate and back', user_id: demo.id, distance: 819})
+route1 = Route.create({ name: 'To the Beach', user_id: demo.id, distance: 7920})
+route2 = Route.create({ name: 'Golden Gate and back', user_id: demo.id, distance: 8190})
 
 waypoint1 = Waypoint.create({ lat: 37.7770318, lng: -122.448711, route_id: route1.id, route_order: 1})
 waypoint2 = Waypoint.create({ lat: 37.771909, lng: -122.448992, route_id: route1.id, route_order: 2})

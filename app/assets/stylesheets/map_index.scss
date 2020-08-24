@@ -24,7 +24,8 @@
 
 .tile-container {
     padding-top: 10px; 
-    display: inline-block; 
+    display: flex; 
+    align-items: center; 
 }
 
 .route-index-tile {
@@ -46,7 +47,8 @@
 .route-list-item {
     list-style-type: none; 
     display: flex; 
-    padding-bottom: 25px;
+    padding-bottom: 20px;
+    height: 100px; 
 }
 
 .route-info {

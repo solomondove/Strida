@@ -81,7 +81,7 @@ class SessionForm extends React.Component {
                     </form>
                     <br/> 
                     <form onSubmit={this.demoSubmit}>
-                        <button className="session-button" id='submit-session' type="submit">Demo Login</button>
+                        <button className="session-button" id='submit-session-demo' type="submit">Demo Login</button>
                     </form>
                 </div>
             </div>
