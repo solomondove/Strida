@@ -13,5 +13,5 @@
 class Waypoint < ApplicationRecord
     validates :lat, :lng, :route_id, :route_order, presence: true 
 
-    belongs_to :route
+    belongs_to :route, dependent: :destroy
 end

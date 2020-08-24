@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'; 
 import RouteMap from './route_map'; 
 import * as RouteSelectors from '../../util/route_selectors'; 
-import { fetchRoute, updateRoute } from '../../actions/route_actions';
+import { fetchRoute, updateRoute, removeRoute } from '../../actions/route_actions';
 
 const mapSTP = (state, ownProps) => {
     
@@ -21,7 +21,8 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = dispatch => ({
     action: route => dispatch(updateRoute(route)),
-    fetchRoute: routeId => dispatch(fetchRoute(routeId))
+    fetchRoute: routeId => dispatch(fetchRoute(routeId)), 
+    removeRoute: routeId => dispatch(removeRoute(routeId))
 })
 
 export default connect(mapSTP, mapDTP)(RouteMap); 

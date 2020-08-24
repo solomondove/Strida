@@ -13,11 +13,13 @@ class Api::RoutesController < ApplicationController
     def destroy 
         @route = Route.find_by(id: params[:id])
         @route.delete
+        waypoint_deleter(@route)
         render json: {}
     end 
 
     def update 
         old_route = Route.find_by(id: params[:id])
+        waypoint_deleter(old_route)
         old_route.delete
         @route = Route.new(route_params)
         if @route.save
@@ -25,7 +27,7 @@ class Api::RoutesController < ApplicationController
             waypoint_builder(waypoints, @route)
             render :show
         else 
-            render json @route.errors.full_messages, status: 422
+            render json: @route.errors.full_messages, status: 422
         end 
     end 
 
@@ -54,5 +56,10 @@ class Api::RoutesController < ApplicationController
             new_point = Waypoint.new(new_map)
             new_point.save
         end 
+    end 
+
+    def waypoint_deleter(route)
+        target_ways = Waypoint.where(route_id: route.id)
+        target_ways.delete(target_ways)
     end 
 end

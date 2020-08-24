@@ -1,0 +1,49 @@
+.map-body {
+    display: flex; 
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+
+#map-container {
+    width: 70%; 
+    height: 500px; 
+}
+
+.map-form {
+    width: 30%; 
+    margin-left: 10px; 
+    height: 500px; 
+}
+
+.map-header {
+    font-size: 16px; 
+    font-weight: 600; 
+    display: block; 
+    height: 30px; 
+    margin-top: 10px; 
+    margin-bottom: 20px; 
+    border-bottom: 1px solid #f0f0f5;
+
+}
+
+.form-body {
+    margin-left: 20px; 
+    margin-bottom: 10px; 
+}
+
+.map-form-footer {
+    border-top: 1px solid #f0f0f5;
+    font-size: 14px; 
+    // height: 200px; 
+}
+
+.fa-undo {
+    color: #fc5200; 
+}
+.fa-trash-alt {
+    color: #fc5200;
+}
+
+.maps-link {
+    color: #007fb6;
+}

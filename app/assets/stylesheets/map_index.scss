@@ -1,0 +1,31 @@
+.route-list-item {
+    list-style-type: none; 
+    display: flex; 
+    font-family: 'Rubik Mono One', sans-serif;
+    margin: 20px; 
+}
+.route-info {
+    margin-left: 10px; 
+}
+.route-name {
+    color: #007fb6;
+    font-size: 17px; 
+}
+
+.distance {
+    font-size: 24px; 
+}
+
+.dist {
+    font-size: 12px; 
+    margin-bottom: 8px; 
+}
+
+.mi {
+    font-size: 15px; 
+}
+
+.edit-route {
+    height: 12px; 
+    margin-left: 0px;
+}

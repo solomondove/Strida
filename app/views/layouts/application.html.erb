@@ -11,6 +11,8 @@
     <script type="text/javascript">
       window.logoURL = "<%= image_url('logo.png') %>";
     </script>
+    <script src="https://kit.fontawesome.com/d74992b798.js" crossorigin="anonymous"></script>
+
     <% if logged_in? %>
       <script>
         window.currentUser = <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>

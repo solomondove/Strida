@@ -1,5 +1,6 @@
 import React from 'react'; 
 import {sortByOrder} from '../../util/route_selectors'; 
+import {Link} from 'react-router-dom'; 
 
 class RouteMap extends React.Component{
     constructor(props){
@@ -24,6 +25,7 @@ class RouteMap extends React.Component{
         this.renderCallback = this.renderCallback.bind(this); 
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.updateStateWaypoints = this.updateStateWaypoints.bind(this); 
     }
     
     componentDidMount() {
@@ -33,27 +35,36 @@ class RouteMap extends React.Component{
         this.map.addListener('click', (e) => { 
             this.createMarker(e.latLng); 
         })
-    
-        this.directionsRenderer.addListener('directions_changed', () => {
-            let result = this.directionsRenderer.getDirections();
-            this.computeTotalDistance(result); 
-        })
        
         if (this.state.waypoints.length > 1) {
             this.mapDirectionsFromWaypoints(this.state.waypoints); 
         }
         
         if (this.props.formType === "Update Route") {
-            this.props.fetchRoute(this.props.id); 
+            this.props.fetchRoute(this.props.id).then(result => {
+                this.updateStateWaypoints(Object.values(result.payload.waypoints))
+            }); 
         
         }
-        
+    }
+
+    updateStateWaypoints(waypoints) {
+        this.setState({waypoints: waypoints})
+    }
+
+    renderMapWithDistance(){
+        this.map = new google.maps.Map(this.mapNode, this.mapOptions);
+        this.directionsRenderer.setMap(this.map); 
+        this.map.addListener('click', (e) => {
+            this.createMarker(e.latLng);
+        })
+        if (this.state.waypoints.length > 0) {
+            this.mapDirectionsFromWaypoints(this.state.waypoints);
+        }
     }
 
     componentDidUpdate(prevProps, prevState) { 
-        if (prevState.waypoints.length < this.props.waypoints.length ) {
-            this.setState({ waypoints: this.props.waypoints })
-        }
+       
         if (prevState.waypoints.length !== this.state.waypoints.length) {
             this.map = new google.maps.Map(this.mapNode, this.mapOptions);
             this.directionsRenderer.setMap(this.map); 
@@ -91,6 +102,7 @@ class RouteMap extends React.Component{
     renderCallback(result, status) { 
         if (status === 'OK') {
             this.directionsRenderer.setDirections(result);
+            this.computeTotalDistance(result);
         }
     }
 
@@ -118,7 +130,8 @@ class RouteMap extends React.Component{
     undoLastWaypoint() {
         let newWaypoints = this.state.waypoints.slice(0); 
         newWaypoints.pop(); 
-        this.setState({waypoints: newWaypoints}); 
+        this.setState((state, props) => ({waypoints: newWaypoints})); 
+
     }
 
     handleSubmit(e) {
@@ -131,25 +144,36 @@ class RouteMap extends React.Component{
     }
 
     render() {
-        console.log(this.state); 
+        let distance = (this.state.distance * 0.000621371).toFixed(2); 
+        const deleteButton = (this.props.formType === "Update Route" ) ? 
+           ( <button onClick={() => this.props.removeRoute(this.state.id)} className="form-body"><i className="fas fa-trash-alt"></i></button>)
+           : ( <div/> )
+
         return (
             <div>
                 <div className="map-body">
                     <div className="map-form">  
                         <h1 className='map-header'>{this.props.formType}</h1>
-                        <form onSubmit={this.handleSubmit}>
-                            <label>Route Name: 
-                                <input type="text" value={this.state.name} onChange={this.update("name")}/>
+                        <form onSubmit={this.handleSubmit} className="form-body">
+                            <label>
+                                <input type="text" value={this.state.name} placeholder='Route Name' onChange={this.update("name")}/>
                             </label>
-                            <button type='submit'>{this.props.formType}</button>
-                        </form>
-                        <button onClick={() => this.undoLastWaypoint()}>Undo Last Segment</button>
-                        
+                            <br/>
+                            <br/> 
+                            <button type='submit' className="session-button">{this.props.formType}</button>
+                        </form> 
+                            <button onClick={() => this.undoLastWaypoint()} className="form-body"><i className="fas fa-undo"></i></button>
+                            {deleteButton}
+                        <br/>
+                        <div className="map-form-footer">
+                            <h1 className="map-header">Route Stats</h1>
+                            <h3>Distance: {distance} miles</h3>
+                            <div className="footer-nav">
+                                <Link className='maps-link' to='/routes'>My Routes</Link>
+                            </div>
+                        </div>
                     </div>
                     <div id="map-container" ref={map => this.mapNode = map }></div>
-                </div>
-                <div className="map-footer">
-                    <h3>{this.state.distance}</h3>
                 </div>
             </div>
         )

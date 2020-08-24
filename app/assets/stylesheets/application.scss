@@ -17,13 +17,10 @@
 @import 'reset.scss'; 
 @import 'nav_bar.scss'; 
 @import 'session_form.scss'; 
+@import 'map.scss'; 
+@import 'map_index.scss'; 
 
 html,body {
     height: 100%; 
     font-family: 'Rubik Mono One', sans-serif; 
-}
-
-#map-container {
-    width: 500px; 
-    height: 500px; 
 }
