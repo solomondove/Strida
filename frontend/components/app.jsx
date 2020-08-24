@@ -13,7 +13,7 @@ import UpdateRouteContainer from './routes/update_route_container';
 const App = () => (
     <div>
         <header>
-            <Link to='/' className="header-logo" />
+            <Link to='/routes' className="header-logo" />
             <div className="nav-body">
                 <NavBarLeftContainer /> 
                 <NavBarRightContainer /> 
