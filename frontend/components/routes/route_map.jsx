@@ -159,7 +159,7 @@ class RouteMap extends React.Component{
                     <div className="map-form">  
                         <h1 className='map-header'>{this.props.formType}</h1>
                         <form onSubmit={this.handleSubmit} className="form-body">
-                            <label>Route name (required) 
+                            <label>Route name (required) <br/> 
                                 <input type="text" value={this.state.name} placeholder='Name' onChange={this.update("name")}/>
                             </label>
                             <br/>

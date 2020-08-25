@@ -22,10 +22,11 @@
     margin: 0; 
 }
 
-.tile-container {
+#tile-container {
     padding-top: 10px; 
-    display: flex; 
+    display: block; 
     align-items: center; 
+    width: 100%; 
 }
 
 .route-index-tile {

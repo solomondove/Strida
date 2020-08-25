@@ -7,7 +7,7 @@ const routesReducer = (state={}, action) => {
 
     switch (action.type) {
         case RECEIVE_ROUTES:
-            return Object.assign({}, state, action.routes); 
+            return Object.assign({}, action.routes); 
         case RECEIVE_ROUTE: 
             newState[action.payload.route.id] = action.payload.route; 
             return newState; 

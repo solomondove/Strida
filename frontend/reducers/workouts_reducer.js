@@ -9,7 +9,7 @@ const workoutsReducer = (state={}, action) => {
             newState[action.workout.id] = action.workout;
             return newState; 
         case RECEIVE_WORKOUTS: 
-            return Object.assign({}, action.workouts); 
+            return Object.assign({}, state, action.workouts); 
         case DELETE_WORKOUT: 
             delete newState[action.workoutId]; 
             return newState;

@@ -22,7 +22,7 @@ export const deleteRoute = routeId => ({
     routeId
 })
 
-export const receivRouteErrors = errors => ({
+export const receiveRouteErrors = errors => ({
     type: RECEIVE_ROUTE_ERRORS, 
     errors
 })

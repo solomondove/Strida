@@ -17,7 +17,7 @@ class RouteIndex extends React.Component {
                     <h1 className="index-heading-header">My Routes</h1>
                     <Link to={`/routes/create`} className="session-button create-route" >Create New Route</Link>
                 </div>
-                <ul className="tile-container">
+                <ul id="tile-container">
                     {this.props.routes.map(route => <RouteIndexItem route={route} key={route.id} removeRoute={this.props.removeRoute} /> )}
                 </ul>
             </div>
