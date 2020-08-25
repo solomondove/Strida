@@ -7,13 +7,13 @@
 #  user_id       :integer          not null
 #  time_elapsed  :integer          not null
 #  average_pace  :integer          not null
-#  descriptions  :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  route_id      :integer
+#  description   :text
 #
 class Workout < ApplicationRecord
-    validates :time_elapsed, :average_pace, :activity_type, :user_id, presence: true 
+    validates :time_elapsed, :user_id, presence: true 
 
     belongs_to :user
     belongs_to :route, optional: true 

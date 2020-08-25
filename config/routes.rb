@@ -5,11 +5,13 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create, :show] do 
       resources :routes, only: [:index]
+      resources :workouts, only: [:index]
     end 
     
     resource :session, only: [:create, :destroy]
-    resources :routes, only: [:create, :show, :destroy, :show, :update]
+    resources :routes, only: [:create, :show, :destroy, :update]
     resources :waypoints, only: [:create, :show]
+    resources :workouts, only: [:create, :show, :destroy, :update]
   end 
 
   root to: 'static_pages#root'

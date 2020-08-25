@@ -7,10 +7,10 @@
 #  user_id       :integer          not null
 #  time_elapsed  :integer          not null
 #  average_pace  :integer          not null
-#  descriptions  :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  route_id      :integer
+#  description   :text
 #
 
 # This model initially had no columns defined. If you add columns to the

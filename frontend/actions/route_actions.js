@@ -22,28 +22,37 @@ export const deleteRoute = routeId => ({
     routeId
 })
 
+export const receivRouteErrors = errors => ({
+    type: RECEIVE_ROUTE_ERRORS, 
+    errors
+})
+
+export const clearRouteErrors = () => ({
+    type: CLEAR_ROUTE_ERRORS
+})
+
 export const createRoute = route => dispatch => {
     return RouteApiUtil.createRoute(route)
-        .then(route => dispatch(receiveRoute(route)))
+        .then(route => dispatch(receiveRoute(route)), errors => dispatch(receiveRouteErrors(errors)))
 }
 
 export const fetchRoute = routeId => dispatch => {
     return RouteApiUtil.fetchRoute(routeId)
-        .then(route => dispatch(receiveRoute(route)))
+        .then(route => dispatch(receiveRoute(route)), errors => dispatch(receiveRouteErrors(errors)))
 }
 
 export const updateRoute = route => dispatch => {
     return RouteApiUtil.updateRoute(route)
-        .then(route => dispatch(receiveRoute(route)))
+        .then(route => dispatch(receiveRoute(route)), errors => dispatch(receiveRouteErrors(errors)))
 }
 
 export const fetchRoutes = userId => dispatch => {
     return RouteApiUtil.fetchRoutes(userId)
-        .then(routes => dispatch(receiveRoutes(routes)))
+        .then(routes => dispatch(receiveRoutes(routes)), errors => dispatch(receiveRouteErrors(errors)))
 }
 
 export const removeRoute = routeId => dispatch => {
     return RouteApiUtil.deleteRoute(routeId)
-        .then(() => dispatch(deleteRoute(routeId)))
+        .then(() => dispatch(deleteRoute(routeId)), errors => dispatch(receiveRouteErrors(errors)))
 }
 

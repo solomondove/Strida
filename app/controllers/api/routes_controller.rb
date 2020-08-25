@@ -43,7 +43,7 @@ class Api::RoutesController < ApplicationController
 
     private
     def route_params 
-        params.require(:route).permit(:id, :name, :user_id, :distance, :waypoints)
+        params.require(:route).permit(:id, :name, :user_id, :distance, :waypoints, :description)
     end 
 
     def waypoint_builder(waypoints, route)
