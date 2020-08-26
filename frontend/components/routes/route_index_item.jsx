@@ -18,7 +18,7 @@ class RouteIndexItem extends React.Component {
         const { route } = this.props
         let distance = (route.distance * 0.000621371).toFixed(2);
         return (
-            <li className="route-index-tile">
+            <div className="route-index-tile">
                 <div className="route-list-item">
                     <i className="fas fa-route fa-5x" id="index-icon"></i>
                     <div className="route-info">
@@ -30,7 +30,7 @@ class RouteIndexItem extends React.Component {
                 <Link to={`/routes/edit/${route.id}`} ><button className="session-button" id="index-button">Edit Route</button></Link>
                 <br/> 
                 <button onClick={this.handleDelete} className="session-button" id="index-button">Delete Route</button>
-           </li>
+           </div>
         )
     }
 }

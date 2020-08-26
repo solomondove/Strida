@@ -8,7 +8,7 @@ const mapSTP = state => ({
     time_elapsed: 0,
     description: '', 
     activity_type: 'Running', 
-    route_id: "default", 
+    route_id: "no route", 
     formType: 'Create Workout', 
     routes: Object.values(state.entities.routes)
         

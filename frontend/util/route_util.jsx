@@ -8,7 +8,7 @@ const Auth = ({
     <Route 
         path={path} 
         exact={exact} 
-        render={props => !loggedIn ? <Component {...props} /> : <Redirect to='/routes' /> } 
+        render={props => !loggedIn ? <Component {...props} /> : <Redirect to='/dashboard' /> } 
     /> 
 )
 

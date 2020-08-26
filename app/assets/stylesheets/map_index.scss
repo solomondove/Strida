@@ -1,4 +1,4 @@
-.route-index {
+.index {
     min-height: 600px; 
     background-color: #f7f7fa; 
     padding-left: 50px; 
@@ -24,9 +24,12 @@
 
 #tile-container {
     padding-top: 10px; 
-    display: block; 
-    align-items: center; 
-    width: 100%; 
+    display: flex; 
+    flex-wrap: wrap; 
+}
+
+.map-tile-container { 
+    width: 100%
 }
 
 .route-index-tile {

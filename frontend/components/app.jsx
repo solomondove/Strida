@@ -12,17 +12,19 @@ import UpdateRouteContainer from './routes/update_route_container';
 import CreateWorkoutContainer from './workouts/create_workout_container'; 
 import WorkoutIndexContainer from './workouts/workouts_index_container'; 
 import UpdateWorkoutContainer from './workouts/update_workout_container'; 
+import DashboardContainer from './dashboard/dashboard_container';
 
 const App = () => (
     <div>
         <header>
-            <Link to='/routes' className="header-logo" />
+            <Link to='/dashboard' className="header-logo" />
             <div className="nav-body">
                 <NavBarLeftContainer /> 
                 <NavBarRightContainer /> 
             </div>
         </header>
         <Switch> 
+            <ProtectedRoute path='/dashboard' component={DashboardContainer} /> 
             <ProtectedRoute exact path='/workouts' component={WorkoutIndexContainer} /> 
             <ProtectedRoute path='/workouts/create' component={CreateWorkoutContainer} /> 
             <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />

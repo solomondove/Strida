@@ -10,18 +10,18 @@ class WorkoutIndex extends React.Component {
 
     render () {
         return this.props.workouts.length > 0 ? (
-            <div className='workout-index' >
+            <div className='index' >
                 <div className="index-heading">
                     <h1 className="index-heading-header">My Workouts</h1>
                     <Link to={`/workouts/create`} className="session-button create-workout" >Create New Workout</Link>
                 </div>
-                <ul id="tile-container">
+                <ul id="tile-container" className="workout-tile-container">
                     {this.props.workouts.map(workout => <WorkoutIndexItem workout={workout} user={this.props.user} key={workout.id} 
                         deleteWorkout={this.props.deleteWorkout} route={this.props.routes[workout.route_id]} />)}
                 </ul>
             </div>
         ) : (
-            <div className='workout-index' height='100px' width='100px'></div>
+            <div className='index'>Please Create A Workout!</div>
         )
     }
 }

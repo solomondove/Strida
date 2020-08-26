@@ -8,9 +8,9 @@ class WorkoutForm extends React.Component{
             time_elapsed: this.props.time_elapsed, 
             description: this.props.description, 
             activity_type: this.props.activity_type, 
-            route_id: null, 
+            route_id: this.props.route_id, 
             id: this.props.id
-        }
+        } 
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.update = this.update.bind(this); 
         this.updateInteger = this.updateInteger.bind(this); 
@@ -21,7 +21,7 @@ class WorkoutForm extends React.Component{
     }
 
     handleSubmit(e) {
-            e.preventDefault(); 
+            e.preventDefault();  
             this.props.action(this.state).then(result => {
                 let that = this; 
                 that.props.history.push('/workouts'); 
@@ -46,6 +46,7 @@ class WorkoutForm extends React.Component{
             <label className="form-label" >Route:
                 <br/> 
                 <select name="route-id" id="route-id" className="input-field form-dropdown" value={this.state.route_id} onChange={this.updateInteger('route_id')}>
+                    <option value="null">Select Route(optional)</option> 
                     {routeOptions.map((route, idx)=> <option value={route.id} key={idx}>{route.name}</option>)}
                 </select>
             </label>

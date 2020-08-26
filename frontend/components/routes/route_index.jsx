@@ -12,17 +12,17 @@ class RouteIndex extends React.Component {
     render() {  
 
         return this.props.routes.length > 0 ? (
-            <div className='route-index' >
+            <div className='index' >
                 <div className="index-heading">
                     <h1 className="index-heading-header">My Routes</h1>
                     <Link to={`/routes/create`} className="session-button create-route" >Create New Route</Link>
                 </div>
-                <ul id="tile-container">
+                <ul id="tile-container" className="map-tile-container">
                     {this.props.routes.map(route => <RouteIndexItem route={route} key={route.id} removeRoute={this.props.removeRoute} /> )}
                 </ul>
             </div>
         ) : (
-            <div className='route-index' height='100px' width='100px'></div>
+            <div className='index'>Please Create a Route!</div>
         )
     }
 
