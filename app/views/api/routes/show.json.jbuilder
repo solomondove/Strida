@@ -9,3 +9,4 @@ json.waypoints do
         end 
     end 
 end 
+

@@ -2,6 +2,7 @@ class Api::WorkoutsController < ApplicationController
 
     def index 
         @workouts = User.find_by(id: params[:user_id]).workouts
+        @routes = User.find_by(id: params[:user_id]).routes
         render :index 
     end 
 
@@ -31,7 +32,6 @@ class Api::WorkoutsController < ApplicationController
     def destroy 
         @workout = Workout.find_by(id: params[:id])
         @workout.delete
-        debugger 
         render json: {}
     end 
 

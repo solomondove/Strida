@@ -11,10 +11,12 @@ export const receiveWorkout = workout => ({
     workout
 })
 
-export const receiveWorkouts = workouts => ({
+export const receiveWorkouts = payload => {   
+    return ({
     type: RECEIVE_WORKOUTS, 
-    workouts 
-})
+    payload 
+    })
+}
 
 export const removeWorkout = workoutId => ({
     type: DELETE_WORKOUT, 

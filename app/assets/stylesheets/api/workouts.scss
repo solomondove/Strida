@@ -1,3 +1,20 @@
 // Place all the styles related to the api::workouts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.workout-form {
+    display: block; 
+}
+
+.form-label {
+    color: #fff; 
+    font-size: 12px;  
+}
+
+#activity-type {
+    width: 242px; 
+}
+
+#route-id {
+    width: 242px; 
+}

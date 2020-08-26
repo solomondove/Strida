@@ -10,6 +10,8 @@ import NavBarLeftContainer from './nav_bar/nav_bar_left_container';
 import RouteIndexContainer from './routes/route_index_container'; 
 import UpdateRouteContainer from './routes/update_route_container'; 
 import CreateWorkoutContainer from './workouts/create_workout_container'; 
+import WorkoutIndexContainer from './workouts/workouts_index_container'; 
+import UpdateWorkoutContainer from './workouts/update_workout_container'; 
 
 const App = () => (
     <div>
@@ -21,7 +23,9 @@ const App = () => (
             </div>
         </header>
         <Switch> 
-            <Route path='/workouts/create' component={CreateWorkoutContainer} /> 
+            <ProtectedRoute exact path='/workouts' component={WorkoutIndexContainer} /> 
+            <ProtectedRoute path='/workouts/create' component={CreateWorkoutContainer} /> 
+            <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />
             <AuthRoute exact path='/' component={SplashContainer} /> 
             <AuthRoute path='/login' component={LoginFormContainer} /> 
             <AuthRoute path='/signup' component={SignupFormContainer} /> 

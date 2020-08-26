@@ -4,19 +4,18 @@ import WorkoutForm from './workout_form';
 import {fetchRoutes} from '../../actions/route_actions'; 
 
 const mapSTP = state => ({
-    userId: state.session.id,
-    timeElapsed: 0,
+    user_id: state.session.id,
+    time_elapsed: 0,
     description: '', 
-    averagePace: 0, 
-    activityType: 'Running', 
-    route_id: null, 
+    activity_type: 'Running', 
+    route_id: "default", 
     formType: 'Create Workout', 
     routes: Object.values(state.entities.routes)
         
 })
 
 const mapDTP = dispatch => ({
-    createWorkout: workout => dispatch(createWorkout(workout)),
+    action: workout => dispatch(createWorkout(workout)),
     fetchRoutes: userId => dispatch(fetchRoutes(userId))
 })
 

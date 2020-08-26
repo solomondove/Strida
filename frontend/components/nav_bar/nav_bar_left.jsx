@@ -12,6 +12,13 @@ export default ({ currentUser }) => {
                     <Link className='nav-menu-link' to='/routes/create'>Create Route</Link>
                 </div>
             </div>
+            <div className="nav-menu-trigger">
+                <h3 className="nav-menu-anchor">Workouts &nbsp;<i className="fas fa-angle-down"></i></h3>
+                <div className="dropdown">
+                    <Link className='nav-menu-link' to='/workouts'>My Workouts</Link>
+                    <Link className='nav-menu-link' to='/workouts/create'>Create Workout</Link>
+                </div>
+            </div>
         </div>
     ) : (
         <div className="nav-left"></div> 

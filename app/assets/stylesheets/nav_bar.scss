@@ -50,51 +50,51 @@ header {
     border-style: none; 
 }
 
-.nav-left {
-    display: block; 
-    height: 100%; 
-    
-}
-
 .nav-body {
     display: flex; 
     justify-content: space-between; 
     width: 90%; 
 }
 
+.nav-left {
+    margin-left: 10px; 
+    display: flex; 
+    height: 100%; 
+    width: 240px; 
+}
+
+
 .nav-menu-anchor, .nav-menu-link { 
     font-family: 'Rubik Mono One', sans-serif;
     font-size: 14px; 
     color: #494950; 
-    font-size: 14px; 
     text-decoration: none; 
 }
 
+.nav-menu-trigger {
+    // margin-left: 15px; 
+    position: relative;  
+    display: block; 
+    height: 100%; 
+    width: 100px; 
+}
+
+.nav-menu-anchor { 
+    justify-content: center; 
+    position: static; 
+    display: flex; 
+    align-items: center; 
+    width: 100%; 
+    height: 100%; 
+    border-left: 1px solid white; 
+    border-right: 1px solid white;
+}
 
 .nav-menu-trigger:hover .nav-menu-anchor {
     color: #fc5200; 
     border-left: 1px solid #d3d3d3; 
     border-right: 1px solid #d3d3d3; 
 }
-
-
-.nav-menu-trigger {
-    margin-left: 15px; 
-    position: relative;  
-    display: block; 
-    height: 100%; 
-}
-.nav-menu-anchor { 
-    justify-content: center; 
-    position: static; 
-    display: flex; 
-    align-items: center; 
-    width: 80px; 
-    height: 100%; 
-    border-left: 1px solid white; 
-    border-right: 1px solid white;
-}
-
 
 .dropdown {
     display: none; 
@@ -104,11 +104,19 @@ header {
     width: 120px; 
     text-align: left; 
     border: 1px solid #d3d3d3; 
-    border-top: none; 
-    // box-shadow: 1px 1px 1px #d3d3d3; 
+    border-top: none;  
     background-color: white;
 }
 
+.dropdown:before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: #d3d3d3;
+    position: absolute;
+    top: 0px;
+    right: 0px; 
+}
 .nav-menu-trigger:hover .dropdown {
     display: block; 
 }
@@ -117,7 +125,7 @@ header {
      display: block; 
      height: 40px; 
      padding-top: 15px; 
-     padding-left: 10px; 
+     padding-left: 8px; 
      align-items: center; 
      background-color: white; 
 }
