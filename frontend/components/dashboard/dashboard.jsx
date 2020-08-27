@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
                         routesArr={this.props.routesArr}/> 
                 </div>
                 <div className="workout-dash-container">
-                    <h1 className="feed-header">Your Workout Feed</h1>
+                    <h1 className="feed-header">Your Activities</h1>
                     <div id="tile-container" className="workout-dash-container">
                         {this.props.workouts.map(workout => <WorkoutIndexItem workout={workout} 
                             user={this.props.user} key={workout.id}

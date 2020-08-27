@@ -18,8 +18,11 @@
 }   
 
 .feed-header {
-    font-size: 20px; 
-    padding-top: 10px; 
+    font-size: 17px; 
+    padding-top: 15px; 
+    margin-left: 10px; 
+    margin-bottom: 10px; 
+    font-weight: 300; 
 }
 .dashboard-profile { 
     // display: block; 
@@ -28,7 +31,7 @@
 .profile-summary { 
     height: 200px; 
     width: 250px;
-    margin-top: 40px; 
+    margin-top: 50px; 
     padding: 10px;
     background-color: #fff; 
     border-radius: 4px; 
@@ -38,7 +41,7 @@
 .profile-icon {
     position: absolute; 
     top: -30px; 
-    left: 90px; 
+    left: 102px; 
     background-color: white;
     border-radius: 50px; 
     box-shadow: 0px 4px 6px #494945; 
@@ -68,8 +71,8 @@
     color: #494945; 
     display: flex; 
     text-align: center;  
-
 }
+
 .profile-subtext {
     color: #494945;
     justify-content: center; 
@@ -77,8 +80,14 @@
     text-decoration: none; 
 }
 
+
 .profile-text {
     font-size: 25px; 
+    font-weight: 400; 
+}
+
+.profile-subtext:hover .profile-text {
+    color: #007fb6
 }
 
 .dashboard-totals {
@@ -87,4 +96,31 @@
     margin-top: 10px; 
     padding: 10px;
     background-color: #fff; 
+}
+
+.stat-block { 
+    display: flex; 
+    justify-content: space-around; 
+    // align-items: center; 
+    margin-top: 20px; 
+    margin-bottom: 30px; 
+}
+
+.stat-block-icon {
+    width: 60px; 
+    height: 60px; 
+    color: #494945;
+}
+
+.stat-block-label {
+    color: #494945; 
+    font-size: 12px; 
+}
+
+.stat-total {
+    font-size: 20px; 
+}
+
+.stat-block-info {
+    width: 155px; 
 }

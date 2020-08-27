@@ -13,7 +13,7 @@ class DashboardProfile extends React.Component {
             metersTraveled += this.props.routesObj[route_id].distance
         })
         let milesTraveled = (metersTraveled * 0.000621371).toFixed(2);
-        return <span>{milesTraveled}</span>
+        return <span className="stat-total">{milesTraveled}</span>
     }
 
     calculateTimeSpentExercising() {
@@ -23,7 +23,7 @@ class DashboardProfile extends React.Component {
         })
         let minutes = minutesTotal % 60; 
         let hours = Math.floor(minutesTotal / 60)
-        return <span>{hours}:{minutes}</span>
+        return <span className="stat-total">{hours}:{minutes}</span>
     }
 
     render() {
@@ -51,15 +51,27 @@ class DashboardProfile extends React.Component {
                 </div>
                 <br/> 
                 <div className="dashboard-totals">
-                    <label className="profile-stat"><i class="fas fa-shoe-prints"></i>Distance Traveled
-                        <br/> 
-                        {this.calculateMilesTraveled()}<span className="denomination">mi</span>
-                    </label>
-                    <br />
-                    <label className="profile-stat"><i class="fas fa-stopwatch"></i>Time Spent Exercising
+                    <div className="stat-block">
+                        <div className="stat-block-icon">
+                            <i className="fas fa-shoe-prints fa-3x" id="stat-block-icon"></i>
+                        </div>
+                        <div className="stat-block-info">
+                            <label className="stat-block-label">Total Distance Traveled</label>
+                            <br/> 
+                            {this.calculateMilesTraveled()}<span className="denomination">mi</span>
+                        </div>
                         <br />
-                        {this.calculateTimeSpentExercising()}<span className="denomination">mins</span>
-                    </label>
+                    </div>
+                    <div className="stat-block">
+                        <div className="stat-block-icon">
+                            <i className="fas fa-stopwatch fa-3x" id="stat-block-icon"></i>
+                        </div>
+                        <div className="stat-block-info">
+                            <label className="stat-block-label">Total Time Spent Exercising</label>
+                            <br />
+                            {this.calculateTimeSpentExercising()}<span className="denomination">m</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
