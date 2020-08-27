@@ -60,7 +60,6 @@ class DashboardProfile extends React.Component {
                             <br/> 
                             {this.calculateMilesTraveled()}<span className="denomination">mi</span>
                         </div>
-                        <br />
                     </div>
                     <div className="stat-block">
                         <div className="stat-block-icon">
