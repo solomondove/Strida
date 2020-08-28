@@ -29,7 +29,7 @@ class SessionForm extends React.Component {
     demoSubmit(e) {
         e.preventDefault(); 
         let demo = { 
-            email: 'demo@demo.com', 
+            email: 'strider@wingfoot.com', 
             password: 'password'
         }; 
         this.props.login(demo);

@@ -23,7 +23,7 @@ class DashboardProfile extends React.Component {
         })
         let minutes = minutesTotal % 60; 
         let hours = Math.floor(minutesTotal / 60)
-        return <span className="stat-total">{hours}:{minutes}</span>
+        return <span className="stat-total">{hours}<span className="denomination">h </span>{minutes}</span>
     }
 
     render() {
@@ -62,7 +62,7 @@ class DashboardProfile extends React.Component {
                         </div>
                     </div>
                     <div className="stat-block">
-                        <div className="stat-block-icon">
+                        <div className="stat-block-icon icon3">
                             <i className="fas fa-stopwatch fa-3x" id="stat-block-icon"></i>
                         </div>
                         <div className="stat-block-info">

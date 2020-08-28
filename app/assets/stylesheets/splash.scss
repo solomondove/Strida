@@ -21,16 +21,22 @@
     background-position: center; 
     background-size: contain; 
     height: 600px; 
-    width: 450px; 
+    width: 400px; 
 }
 
+.splash-menu {
+    margin-top: 150px; 
+    width: 400px; 
+}
 #splash-demo {
     color: #242428; 
     border: 1px solid #dfdfe8; 
     background-color: #fff; 
-    height: 85px; 
-    width:300px; 
+    height: 70px; 
+    width: 400px; 
     font-size: 15px; 
+    position: relative; 
+    margin: 0; 
 }
 
 #splash-demo:hover {
@@ -38,15 +44,39 @@
     border-color: #6d6d78; 
 }
 
-.splash-menu {
-    margin-top: 350px; 
-    width: 300px; 
+.splash-form {
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+}
+.splash-login-link {
+    text-decoration: none; 
+    color: black; 
+} 
+
+.splash-icon { 
+    position: absolute; 
+    left: 35px; 
+}
+
+.splash-dividing-border { 
+    border-bottom: 1px solid #dfdfe8; 
+    position: relative; 
+}
+
+.splash-dividing-or {
+    color: #242428; 
+    position: absolute; 
+    background-color: #fff; 
+    bottom: -8px; 
+    width: 20px; 
+    right: 200px; 
 }
 
 .splash-body footer {
     margin-top: 5px; 
     font-family: inherit; 
     font-size: 12px; 
+    color: #494945; 
 }
 
 .splash-link {

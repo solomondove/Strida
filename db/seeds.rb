@@ -10,7 +10,7 @@ Route.destroy_all
 Waypoint.destroy_all
 
 solomon = User.create({ email: 'solomon@solomon.com', password: 'password'})
-demo = User.create({ email: 'demo@demo.com', password: 'password'})
+demo = User.create({ email: 'strider@wingfoot.com', password: 'password'})
 
 route1 = Route.create({ name: 'To The Beach', user_id: demo.id, distance: 7920})
 route2 = Route.create({ name: 'Golden Gate And Back', user_id: demo.id, distance: 8190})
@@ -78,3 +78,15 @@ wp40 = Waypoint.create({ lat: 37.839949, lng: -122.489269, route_id: route11.id,
 wp41 = Waypoint.create({ lat: 37.835874, lng: -122.489637, route_id: route11.id, route_order: 2})
 wp42 = Waypoint.create({ lat: 37.827840, lng: -122.520118, route_id: route11.id, route_order: 3})
 
+wo1 = Workout.create({ activity_type: "Running", description: "A lovely day to chase something", route_id: route6.id, time_elapsed: 20, user_id: demo.id})
+wo2 = Workout.create({ activity_type: "Running", description: "We ran all night in persuit and there is further yet still to go.", route_id: route11.id, time_elapsed: 62, user_id: demo.id})
+wo3 = Workout.create({ activity_type: "Running", description: "I was challenged me to a sprint, guess who won?!", route_id: route4.id, time_elapsed: 9, user_id: demo.id})
+wo4 = Workout.create({ activity_type: "Hiking", description: "Walked to have dinner with the fellows! Can't say it wasn't a great time!", route_id: route10.id, time_elapsed: 45, user_id: demo.id})
+wo5 = Workout.create({ activity_type: "Hiking", description: "A romantic hike with my main squeeze, A-bae", route_id: route8.id, time_elapsed: 43, user_id: demo.id})
+wo6 = Workout.create({ activity_type: "Running", description: "Gotta stay in fighting shape!", route_id: route9.id, time_elapsed: 12, user_id: demo.id})
+wo7 = Workout.create({ activity_type: "Cycling", description: "Back in the saddle! Its been a minute!", route_id: route2.id, time_elapsed: 23, user_id: demo.id})
+wo8 = Workout.create({ activity_type: "Running", description: "Fun in the sun! I should spend more time at the beach after a run!", route_id: route1.id, time_elapsed: 59, user_id: demo.id})
+wo9 = Workout.create({ activity_type: "Running", description: "Was that a foul voice or just Karl? Hard to tell these days. ;)", route_id: route5.id, time_elapsed: 52, user_id: demo.id})
+wo10 = Workout.create({ activity_type: "Hiking", description: "Casual evening stroll!", route_id: route7.id, time_elapsed: 44, user_id: demo.id})
+wo11 = Workout.create({ activity_type: "Running", description: "Greenleaf and I, the rematch (I still previaled)", route_id: route4.id, time_elapsed: 10, user_id: demo.id})
+wo12 = Workout.create({ activity_type: "Running", description: "casual, easy, a good day to stretch the legs.", route_id: route3.id, time_elapsed: 68, user_id: demo.id})

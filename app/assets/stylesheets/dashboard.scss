@@ -12,7 +12,9 @@
     width: 300px; 
 }
 .workout-dash-container { 
-    width: 600px; 
+    margin-right: 100px; 
+    padding-right: 20px; 
+    width: 635px; 
     height: 800px; 
     overflow-x: hidden; 
 }   
@@ -31,7 +33,7 @@
 .profile-summary { 
     height: 200px; 
     width: 250px;
-    margin-top: 50px; 
+    margin-top: 70px; 
     padding: 10px;
     background-color: #fff; 
     border-radius: 4px; 
@@ -54,11 +56,11 @@
 
 .profile-header {
     display: flex; 
-    margin-left: 25px; 
+    justify-content: center;  
     margin-top: 50px;
     font-weight: 600;  
     font-size: 22px; 
-    width: 200px; 
+    width: 100%; 
     padding-bottom: 15px; 
     border-bottom: 1px solid #f7f7fa;
 }
@@ -123,4 +125,83 @@
 
 .stat-block-info {
     width: 155px; 
+} 
+
+.icon3 {
+    margin-left: 10px; 
+}
+
+.dashboard-workout-tile {
+    display: flex; 
+    background-color: #fff; 
+    width: 600px; 
+    height: 190px; 
+    font-family: 'Rubik Mono One', sans-serif;
+    justify-content: center;  
+    padding: 10px; 
+    margin: 10px; 
+    border-radius: 4px; 
+}
+
+.dash-workout-title { 
+    font-size: 20px; 
+    color: #007fb6;
+    margin-bottom: 15px; 
+}
+
+.dash-description-content {
+    font-size: 15px; 
+    color: black; 
+    height: 90px; 
+    overflow-x: hidden; 
+    padding: 3px; 
+    margin-bottom: 5px; 
+    border: 2px solid #f7f7fa; 
+    border-radius: 4px; 
+}
+
+.dash-tile-section-content{
+    display: block; 
+    width: 200px; 
+    justify-content: center; 
+}
+
+.dash-index-tile-left {
+    height: 180px; 
+    display: inline-block; 
+    width: 145px; 
+    padding-left: 15px; 
+    margin-right: 5px; 
+}
+
+.dash-index-tile-right { 
+    display: inline-block; 
+    width: 240px; 
+    height: 180px; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    border-left: 1px solid #f7f7fa;
+    border-right: 1px solid #f7f7fa;
+}
+.dash-stats-tile {
+    display: inline-block; 
+    font-size: 12px; 
+    margin-right: 5px; 
+}
+
+.dash-stat {
+    font-size: 22px;
+    color: black;  
+}
+
+.dash-tile-section-content{
+    width: 160px; 
+    justify-content: center; 
+}
+
+.dash-stat-section-header { 
+    font-size: 15px; 
+    color: #494945; 
+    margin-top: 15px; 
+    margin-left: 20px; 
 }

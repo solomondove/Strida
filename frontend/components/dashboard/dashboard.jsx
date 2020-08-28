@@ -1,5 +1,5 @@
 import React from 'react'; 
-import WorkoutIndexItem from '../workouts/workout_index_item'; 
+import DashboardWorkoutIndexItem from './dashboard_workout_index_item'; 
 import DashboardProfile from './dashboard_profile'; 
 
 class Dashboard extends React.Component {
@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
                 <div className="workout-dash-container">
                     <h1 className="feed-header">Your Activities</h1>
                     <div id="tile-container" className="workout-dash-container">
-                        {this.props.workouts.map(workout => <WorkoutIndexItem workout={workout} 
+                        {this.props.workouts.map(workout => <DashboardWorkoutIndexItem workout={workout} 
                             user={this.props.user} key={workout.id}
                             deleteWorkout={this.props.deleteWorkout} 
                             route={this.props.routesObj[workout.route_id]} />)}

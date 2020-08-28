@@ -8,11 +8,11 @@
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" href="<%= image_url('favicon.ico') %>" >
     <script type="text/javascript">
       window.logoURL = "<%= image_url('logo.png') %>";
     </script>
     <script src="https://kit.fontawesome.com/d74992b798.js" crossorigin="anonymous"></script>
-    
     <% if logged_in? %>
       <script>
         window.currentUser = <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>

@@ -4,7 +4,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container'; 
 import SplashContainer from './session/splash_container';
 import {Route, Link, Switch} from 'react-router-dom'; 
-import {AuthRoute, ProtectedRoute} from '../util/route_util'; 
+import {AuthRoute, ProtectedRoute, DashRoute} from '../util/route_util'; 
 import CreateRouteContainer from './routes/create_route_container'; 
 import NavBarLeftContainer from './nav_bar/nav_bar_left_container'; 
 import RouteIndexContainer from './routes/route_index_container'; 
@@ -24,7 +24,7 @@ const App = () => (
             </div>
         </header>
         <Switch> 
-            <ProtectedRoute path='/dashboard' component={DashboardContainer} /> 
+            <DashRoute path='/dashboard' component={DashboardContainer} /> 
             <ProtectedRoute exact path='/workouts' component={WorkoutIndexContainer} /> 
             <ProtectedRoute path='/workouts/create' component={CreateWorkoutContainer} /> 
             <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />

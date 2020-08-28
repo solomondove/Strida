@@ -170,9 +170,11 @@ class RouteMap extends React.Component{
                         <br/>
                         <div className="map-form-footer">
                             <h1 className="map-header">Route Stats</h1>
-                            <h3 className="map-distance">Distance: {distance} miles</h3>
-                            <div className="footer-nav">
-                                <Link className='maps-link' to='/routes'>My Routes</Link>
+                            <div className="form-body">
+                                <h3 className="map-distance">Distance: {distance} miles</h3>
+                                <div className="footer-nav">
+                                    <Link className='maps-link' to='/routes'>My Routes</Link>
+                                </div>
                             </div>
                         </div>
                     </div>

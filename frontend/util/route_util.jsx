@@ -29,3 +29,17 @@ const Protected = ({
 )
 
 export const ProtectedRoute = withRouter(connect(mapSTP, null)(Protected))
+
+
+const Dash = ({
+    component: Component, path, loggedIn, exact
+}) => (
+        <Route
+            path={path}
+            exact={exact}
+            render={props => !loggedIn ? <Redirect to='/' /> : <Component {...props} />}
+        />
+    )
+
+
+export const DashRoute = withRouter(connect(mapSTP, null)(Dash))
