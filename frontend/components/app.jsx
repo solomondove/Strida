@@ -24,16 +24,16 @@ const App = () => (
             </div>
         </header>
         <Switch> 
-            <DashRoute path='/dashboard' component={DashboardContainer} /> 
-            <ProtectedRoute exact path='/workouts' component={WorkoutIndexContainer} /> 
-            <ProtectedRoute path='/workouts/create' component={CreateWorkoutContainer} /> 
-            <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />
             <AuthRoute exact path='/' component={SplashContainer} /> 
             <AuthRoute path='/login' component={LoginFormContainer} /> 
             <AuthRoute path='/signup' component={SignupFormContainer} /> 
+            <DashRoute path='/dashboard' component={DashboardContainer} /> 
+            <ProtectedRoute exact path='/routes' component={RouteIndexContainer} /> 
             <ProtectedRoute path='/routes/create' component={CreateRouteContainer} /> 
             <ProtectedRoute path='/routes/edit/:id' component={UpdateRouteContainer} /> 
-            <ProtectedRoute exact path='/routes' component={RouteIndexContainer} /> 
+            <ProtectedRoute exact path='/workouts' component={WorkoutIndexContainer} /> 
+            <ProtectedRoute path='/workouts/create' component={CreateWorkoutContainer} /> 
+            <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />
         </Switch> 
         <footer className='footer'>
             <div ></div>
