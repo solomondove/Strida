@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
     }
 
     render () {
-
+        let workoutsReversed = this.props.workouts.reverse(); 
         return (
             <div className="dashboard">
                 <div id="profile-container">
@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
                 <div className="workout-dash-container">
                     <h1 className="feed-header">Your Activities</h1>
                     <div id="tile-container" className="workout-dash-container">
-                        {this.props.workouts.map(workout => <DashboardWorkoutIndexItem workout={workout} 
+                        {workoutsReversed.map(workout => <DashboardWorkoutIndexItem workout={workout} 
                             user={this.props.user} key={workout.id}
                             deleteWorkout={this.props.deleteWorkout} 
                             route={this.props.routesObj[workout.route_id]} />)}

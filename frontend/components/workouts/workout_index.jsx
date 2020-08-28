@@ -9,6 +9,8 @@ class WorkoutIndex extends React.Component {
     }
 
     render () {
+        let workoutsReversed = this.props.workouts.reverse(); 
+        
         return this.props.workouts.length > 0 ? (
             <div className='index' >
                 <div className="index-heading">
@@ -16,7 +18,7 @@ class WorkoutIndex extends React.Component {
                     <Link to={`/workouts/create`} className="session-button create-workout" >Create New Workout</Link>
                 </div>
                 <ul id="tile-container" className="workout-tile-container">
-                    {this.props.workouts.map(workout => <WorkoutIndexItem workout={workout} user={this.props.user} key={workout.id} 
+                    {workoutsReversed.map(workout => <WorkoutIndexItem workout={workout} user={this.props.user} key={workout.id} 
                         deleteWorkout={this.props.deleteWorkout} route={this.props.routes[workout.route_id]} />)}
                 </ul>
             </div>

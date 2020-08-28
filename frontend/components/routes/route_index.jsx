@@ -10,6 +10,7 @@ class RouteIndex extends React.Component {
     }
 
     render() {  
+        let routesReversed = this.props.routes.reverse(); 
 
         return this.props.routes.length > 0 ? (
             <div className='index' >
@@ -18,7 +19,7 @@ class RouteIndex extends React.Component {
                     <Link to={`/routes/create`} className="session-button create-route" >Create New Route</Link>
                 </div>
                 <ul id="tile-container" className="map-tile-container">
-                    {this.props.routes.map(route => <RouteIndexItem route={route} key={route.id} removeRoute={this.props.removeRoute} /> )}
+                    {routesReversed.map(route => <RouteIndexItem route={route} key={route.id} removeRoute={this.props.removeRoute} /> )}
                 </ul>
             </div>
         ) : (
