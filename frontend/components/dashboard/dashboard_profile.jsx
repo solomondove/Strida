@@ -10,7 +10,9 @@ class DashboardProfile extends React.Component {
         })
         let metersTraveled = 0; 
         routesTraveled.forEach(route_id => {
-            metersTraveled += this.props.routesObj[route_id].distance
+            if (this.props.routesObj[route_id]) {
+                metersTraveled += this.props.routesObj[route_id].distance
+            }
         })
         let milesTraveled = (metersTraveled * 0.000621371).toFixed(2);
         return <span className="stat-total">{milesTraveled}</span>

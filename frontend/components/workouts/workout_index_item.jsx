@@ -3,7 +3,11 @@ import {Link} from 'react-router-dom';
 
 
 class WorkoutIndexItem extends React.Component {
+    constructor(props) {
+        super(props); 
 
+        this.handleDelete = this.handleDelete.bind(this); 
+    }
     handleDelete() {
         this.props.deleteWorkout(this.props.workout.id); 
     }
