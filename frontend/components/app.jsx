@@ -36,7 +36,22 @@ const App = () => (
             <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />
         </Switch> 
         <footer className='footer'>
-            <div ></div>
+            <div> 
+                <h1>Information</h1>
+                <br/> 
+                <p className="app-information">This is a clone of Strava by Solomon Dove and intended for demonstration purposes only. 
+                    It was made using Google Maps API for route creation, full CRUD features for workout tracking based on user created
+                    routes, and secure user authentication practices to protect user sign in details. 
+                </p>
+            </div>
+            <div>
+                <h1>Contact</h1>                
+                <br/> 
+                <div className="profile-links">
+                    <a href="https://github.com/solomondove/Strida.git"><i className="footer-icon fab fa-github fa-2x">  </i>Github</a> 
+                    <a href="linkedin.com/in/solomon-dove"><i className="footer-icon fab fa-linkedin-in fa-2x">  </i>LinkedIn</a>
+                </div>
+            </div>
         </footer>
     </div>
 );
