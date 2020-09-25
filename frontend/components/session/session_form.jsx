@@ -17,6 +17,7 @@ class SessionForm extends React.Component {
         this.props.clearSessionErrors(); 
     }
 
+
     handleSubmit(e) {
         e.preventDefault(); 
         this.props.action(this.state); 
@@ -58,7 +59,7 @@ class SessionForm extends React.Component {
         )
  
         return(
-            <div className="form-background">
+            <div className="form-background" id="form-background">
                 <br/> 
                 <br/> 
                 <br/> 

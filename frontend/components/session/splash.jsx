@@ -6,6 +6,8 @@ class SplashPage extends React.Component {
         super(props); 
 
         this.demoSubmit = this.demoSubmit.bind(this); 
+        this.redirectToLogin = this.redirectToLogin.bind(this); 
+        this.redirectToSignup = this.redirectToSignup.bind(this);
     }
 
     demoSubmit(e) {
@@ -17,6 +19,16 @@ class SplashPage extends React.Component {
         this.props.login(demo);
     }
 
+    redirectToLogin(e) {
+        e.preventDefault(); 
+        this.props.history.push('/login'); 
+    }
+
+    redirectToSignup(e) {
+        e.preventDefault(); 
+        this.props.history.push('/signup');
+    }
+
     render() {
         return(
             <div className="splash-container">
@@ -25,15 +37,14 @@ class SplashPage extends React.Component {
                     <p className="splash-image"></p>
                     <div className="splash-menu">
                         <div className="splash-dividing-border">
-                            <form className="splash-form">
-                                <button id="splash-demo" className="session-button"><Link to="/login" className="splash-login-link" >
-                                    <i className="fas fa-user-alt fa-1x splash-icon"></i> Log In With Account</Link>
+                            <form className="splash-form" onSubmit={this.redirectToLogin}>
+                                <button id="splash-demo" className="session-button" type="submit">
+                                    <i className="fas fa-user-alt fa-1x splash-icon"></i> Log In With Account
                                 </button>
-                                <div className="splash-dividing-or">or</div>
                             </form>
-                            <form className="splash-form">
-                                <button id="splash-demo" className="session-button"><Link to="/signup" className="splash-login-link" >
-                                    <i className="far fa-envelope fa-1x splash-icon"></i> Sign Up With Email</Link>
+                            <form className="splash-form" onSubmit={this.redirectToSignup}>
+                                <button id="splash-demo" className="session-button" type="submit">
+                                    <i className="far fa-envelope fa-1x splash-icon"></i> Sign Up With Email
                                 </button> 
                                 <div className="splash-dividing-or">or</div>
                             </form>

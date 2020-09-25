@@ -15,9 +15,10 @@ class RouteMap extends React.Component{
             user_id: this.props.user_id, 
             id: this.props.id
         }
-        
+        this.center = this.state.waypoints.length === 0 ? { lat: 37.7758, lng: -122.435 } : this.state.waypoints[this.state.waypoints.length - 1]; 
+
         this.mapOptions = {
-            center: this.state.waypoints.length === 0 ? {lat: 37.7758, lng: -122.435 } : this.state.waypoints[this.state.waypoints.length -1 ],
+            center: this.center,
             zoom: 14
         }; 
 
@@ -112,11 +113,21 @@ class RouteMap extends React.Component{
         return { location: position }
     }
 
-    mapDirectionsFromWaypoints(positions, travelMode="WALKING"){
-        let origin = positions[0]; 
-        let destination = positions[positions.length-1]; 
-        let middlePosArray = positions.slice(1, positions.length-1);
-        let waypoints = middlePosArray.map(pos => this.createWaypoint(pos)); 
+    mapDirectionsFromWaypoints(positions, travelMode="WALKING"){ 
+        let origin; 
+        let destination; 
+        let waypoints; 
+
+        if (positions.length === 1) {
+            origin = positions[0]; 
+            destination = positions[0]; 
+        } else {
+            origin = positions[0]; 
+            destination = positions[positions.length-1]; 
+            let middlePosArray = positions.slice(1, positions.length-1);
+            waypoints = middlePosArray.map(pos => this.createWaypoint(pos)); 
+        }
+       
         
         let request = {
             origin: origin, 

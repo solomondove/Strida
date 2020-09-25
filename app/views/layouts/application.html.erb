@@ -18,8 +18,9 @@
     <meta property="og:type" content="webiste">
     <meta property="og:url" content="https://solomon-strida.herokuapp.com/">
     <meta property="og:title" content="Welcome to Strida!">
-    <meta property="og:description" content="Strida is a production level clone of Strava built for edcuational purposes. It leverages Ruby on Rails (backend) with JavaScript via React/Redux (frontend).">
+    <meta property="og:description" content="Strida is a production level clone of Strava built for educational purposes. It leverages Ruby on Rails (backend) with JavaScript via React/Redux (frontend).">
     <script src="https://kit.fontawesome.com/d74992b798.js" crossorigin="anonymous"></script>
+
     <% if logged_in? %>
       <script>
         window.currentUser = <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
