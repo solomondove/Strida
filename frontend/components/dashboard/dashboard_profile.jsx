@@ -28,6 +28,11 @@ class DashboardProfile extends React.Component {
         return <span className="stat-total">{hours}<span className="denomination">h </span>{minutes}</span>
     }
 
+    ageOfUser() {
+        let date = new Date(this.props.user.created_at);
+        return (`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`); 
+    }
+
     render() {
         return(
             <div className="dashboard-profile">
@@ -71,6 +76,16 @@ class DashboardProfile extends React.Component {
                             <label className="stat-block-label">Total Time Spent Exercising</label>
                             <br />
                             {this.calculateTimeSpentExercising()}<span className="denomination">m</span>
+                        </div>
+                    </div>
+                    <div className="stat-block">
+                        <div className="stat-block-icon icon3">
+                            <i class="fab fa-pagelines fa-3x" id='stat-block-icon'></i>
+                        </div>
+                        <div className="stat-block-info">
+                            <label className="stat-block-label">Member Since</label>
+                            <br />
+                            {this.ageOfUser()}
                         </div>
                     </div>
                 </div>
