@@ -31,14 +31,14 @@ class DashboardWorkoutIndexItem extends React.Component {
         if (route === undefined) {
             return (
                 <div className="dash-tile-section-content">
-                    <label className="dash-stat-section-header">Time:
+                    <div className="dash-stat-section-header">Time:
                         <br />
                         <span className='stat'>{workout.time_elapsed}</span> <span className='denomination'>m</span>
-                    </label>
-                    <label className="dash-stat-section-header">Date:
+                    </div>
+                    <div className="dash-stat-section-header">Date:
                         <br />
                         <span className='stat'>{this.dateInfo()}</span>
-                    </label>
+                    </div>
                 </div>
             )
         } else {
