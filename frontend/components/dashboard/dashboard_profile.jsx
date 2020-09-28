@@ -80,7 +80,7 @@ class DashboardProfile extends React.Component {
                     </div>
                     <div className="stat-block">
                         <div className="stat-block-icon icon3">
-                            <i class="fab fa-pagelines fa-3x" id='stat-block-icon'></i>
+                            <i className="fab fa-pagelines fa-3x" id='stat-block-icon'></i>
                         </div>
                         <div className="stat-block-info">
                             <label className="stat-block-label">Member Since</label>

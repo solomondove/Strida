@@ -22,16 +22,21 @@ class RouteMap extends React.Component{
             zoom: 14
         }; 
 
+        this.markers = []; 
+
         this.mapDirectionsFromMarkers = this.mapDirectionsFromWaypoints.bind(this); 
         this.renderCallback = this.renderCallback.bind(this); 
         this.undoLastWaypoint = this.undoLastWaypoint.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.updateStateWaypoints = this.updateStateWaypoints.bind(this); 
-        
+        this.placeFirstMarker = this.placeFirstMarker.bind(this); 
+        this.createMarker = this.createMarker.bind(this); 
     }
     
     componentDidMount() {
         this.map = new google.maps.Map(this.mapNode, this.mapOptions); 
+        
+
         this.directionsRenderer.setMap(this.map); 
     
         this.map.addListener('click', (e) => { 
@@ -40,7 +45,7 @@ class RouteMap extends React.Component{
        
         if (this.state.waypoints.length > 1) {
             this.mapDirectionsFromWaypoints(this.state.waypoints); 
-        }
+        } 
         
         if (this.props.formType === "Update Route") {
             this.props.fetchRoute(this.props.id).then(result => {
@@ -54,33 +59,33 @@ class RouteMap extends React.Component{
         this.setState({waypoints: waypoints})
     }
 
-    renderMapWithDistance(){
-        this.map = new google.maps.Map(this.mapNode, this.mapOptions);
-        this.directionsRenderer.setMap(this.map); 
-        this.map.addListener('click', (e) => {
-            this.createMarker(e.latLng);
-        })
-        if (this.state.waypoints.length > 0) {
-            this.mapDirectionsFromWaypoints(this.state.waypoints);
-        }
-    }
-
     componentDidUpdate(prevProps, prevState) { 
        
+        
+
         if (prevState.waypoints.length !== this.state.waypoints.length) {
-            this.map = new google.maps.Map(this.mapNode, this.mapOptions);
-            this.directionsRenderer.setMap(this.map); 
-
-            this.map.addListener('click', (e) => {
-                this.createMarker(e.latLng);
+            this.markers.forEach(marker => {
+                marker.setMap(null);
             })
+            
 
-            if (this.state.waypoints.length > 0) {
+            if (this.state.waypoints.length > 1) {
                 this.mapDirectionsFromWaypoints(this.state.waypoints); 
+            } else if (this.state.waypoints.length === 1) {
+                this.directionsRenderer.setMap(null); 
+                this.placeFirstMarker();
             }
         }
     }
     
+    placeFirstMarker () {
+       let pos = this.state.waypoints[0]; 
+       let marker = new google.maps.Marker({
+           position: pos, 
+           map: this.map, 
+       })
+       this.markers.push(marker); 
+    }
 
     //calculates state.distance of route based on results from directions_changed event listener
     computeTotalDistance(result) {
@@ -103,6 +108,8 @@ class RouteMap extends React.Component{
     //helper function for mapDirectionsFromMarkers
     renderCallback(result, status) { 
         if (status === 'OK') {
+            this.directionsRenderer.setMap(null); 
+            this.directionsRenderer.setMap(this.map); 
             this.directionsRenderer.setDirections(result);
             this.computeTotalDistance(result);
         }
