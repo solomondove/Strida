@@ -23,18 +23,18 @@ const App = () => (
                 <NavBarRightContainer /> 
             </div>
         </header>
-        <Switch> 
-            <Route exact path='/' component={SplashContainer} /> 
+        {/* <Switch>  */}
+            <AuthRoute exact path='/' component={SplashContainer} /> 
             <AuthRoute path='/login' component={LoginFormContainer} /> 
             <AuthRoute path='/signup' component={SignupFormContainer} /> 
-            <DashRoute path='/dashboard' component={DashboardContainer} /> 
+            <DashRoute exact path='/dashboard' component={DashboardContainer} /> 
             <ProtectedRoute exact path='/routes' component={RouteIndexContainer} /> 
             <ProtectedRoute path='/routes/create' component={CreateRouteContainer} /> 
             <ProtectedRoute path='/routes/edit/:id' component={UpdateRouteContainer} /> 
             <ProtectedRoute exact path='/workouts' component={WorkoutIndexContainer} /> 
             <ProtectedRoute path='/workouts/create' component={CreateWorkoutContainer} /> 
             <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />
-        </Switch> 
+        {/* </Switch>  */}
         <footer className='footer'>
             <div> 
                 <h1>Information</h1>

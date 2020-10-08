@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        
+        debugger; 
         let label = this.props.formType === "Sign Up" ? (
             "Join Strida today, it's Free."
         ) : (
