@@ -23,8 +23,7 @@ const App = () => (
                 <NavBarRightContainer /> 
             </div>
         </header>
-        {/* <Switch>  */}
-            <AuthRoute exact path='/' component={SplashContainer} /> 
+        <Switch> 
             <AuthRoute path='/login' component={LoginFormContainer} /> 
             <AuthRoute path='/signup' component={SignupFormContainer} /> 
             <DashRoute exact path='/dashboard' component={DashboardContainer} /> 
@@ -34,7 +33,8 @@ const App = () => (
             <ProtectedRoute exact path='/workouts' component={WorkoutIndexContainer} /> 
             <ProtectedRoute path='/workouts/create' component={CreateWorkoutContainer} /> 
             <ProtectedRoute path='/workouts/edit/:id' component={UpdateWorkoutContainer} />
-        {/* </Switch>  */}
+            <AuthRoute path='/' component={SplashContainer} /> 
+        </Switch> 
         <footer className='footer'>
             <div> 
                 <h1>Information</h1>

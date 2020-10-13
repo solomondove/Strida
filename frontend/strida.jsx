@@ -9,6 +9,7 @@ import * as workoutActions from './actions/workout_actions';
 //testing imports only 
 
 document.addEventListener("DOMContentLoaded", () => {
+    debugger; 
     let store; 
     if (window.currentUser) {
         const preloadedState = {
