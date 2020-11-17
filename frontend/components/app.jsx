@@ -40,8 +40,8 @@ const App = () => (
                 <h1>Information</h1>
                 <br/> 
                 <p className="app-information">This is a clone of Strava by Solomon Dove and intended for demonstration purposes only. 
-                    It was made using Google Maps API for route creation, full CRUD features for workout tracking based on user created
-                    routes, and secure user authentication practices to protect user sign in details. 
+                    It was made using the Google Maps API for route creation with full CRUD features for workouts and tracking of exercise statistics
+                    and secure user authentication practices.  
                 </p>
             </div>
             <div>
